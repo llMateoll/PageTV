@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Hubtek - Upload Image</title>
+
+</head>
+<body>
+
+    <ul class="nav justify-content-center bg-dark">
+        <li class="nav-item">
+          <img src="https://www.gohubtek.com/wp/wp-content/uploads/2019/07/logo-final.png" alt="">
+        </li>
+    </ul>
+
+    <div class="container col-10 offset-1 col-lg-8 offset-lg-2 div-wrapper d-flex justify-content-center align-items-center mt-5" style="padding-top: 3%;">
+        <div class="card" style="width: 24rem; border-color: #a7a7a7;">
+            <div class="col-10 offset-1 col-lg-8 offset-lg-2 mt-5">
+                <h4 class="text-center">UPLOAD IMAGE</h4>
+                <hr style="border-color: #a7a7a7;">
+                <br>
+                <form action="{% url 'gallery:upload_image' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% if message %}
+                        <div class='alert alert-info'>
+                        {{ message }}
+                    {% endif %}
+                    
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">Image name</label>
+                      <input class="form-control" id="id_name" type="text" placeholder="Add name for image" name="name" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput">Select image</label>
+                      <input class="form-control" style="border: none;" id="id_image" type="file" accept="image/*" name="image" required>
+                    </div><br>
+            
+                    <input class="btn btn-success btn-block mb-2" type="submit" value="Submit" />
+                </form>
+                <a class="btn btn-danger btn-block mb-5" href="{% url 'gallery:image_gallery' %}">Back</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Script -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
